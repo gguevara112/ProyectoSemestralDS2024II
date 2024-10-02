@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>React JSX Example</title>
+  <script defer src="https://unpkg.com/react@17/umd/react.development.js"></script>
+  <script defer src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+  <script defer src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      padding: 2¿1px;
+      text-align: center;
+      border-bottom: 2px solid #ddd;
+    }
+
+    .custom-header {
+      padding: 10px;
+      font-size: 14px; 
+      font-weight: bolder;
+      color:#cccccc;
+    }
+
+    .banner {
+      position: relative;
+      background-size: cover;
+      background-position: center;
+      height: 500px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity: 0; /* Oculto inicialmente */
+      transition: opacity 2s ease-in-out; /* Transición gradual */
+    }
+
+    .banner-visible {
+      opacity: 1; /* Visible cuando se monte */
+    }
+
+    .banner-text {
+      color: white;
+      font-size: 24px;
+      font-weight: bold;
+      padding: 20px;
+    }
+    .differs{
+      color:#cccccc;
+      font-size: 24px;
+      font-weight: bold;
+      margin:80px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      
+    
+
+    }
+
+    main {
+      padding: 20px;
+      background-color: #fff;
+      max-width: 800px;
+      margin: 20px auto;
+      border: 1px solid #ddd; 
+      border-radius: 10px;
+    }
+
+    main h2 {
+      color: #B7D8F2;
+
+
+    }
+
+    main p {
+      line-height: 1.6;
+      font-size: 14px;
+    }
+    footer{
+      font-size: 14px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin:200px 0 30px;
+      color:#cccccc;
+    }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <script type="text/babel">
+
+    // Componente Header
+    function Header() {
+      return (
+        <header>
+          <div className="custom-header">
+            Avance 1 - propuesta de idea
+          </div>
+        </header>
+      );
+    }
+
+    // Componente Banner con imagen de fondo y texto
+    function Banner() {
+      const backgroundImageUrl = "https://www.shutterstock.com/image-vector/beautiful-clouds-abstract-white-blue-600nw-2477952373.jpg"; // Reemplaza esta URL por la tuya
+      const [isVisible, setIsVisible] = React.useState(false);
+
+      // useEffect para cambiar la opacidad cuando el componente se monte
+      React.useEffect(() => {
+        setTimeout(() => {
+          setIsVisible(true);
+        }, 100); // Pequeño retraso antes de que aparezca
+      }, []);
+
+      return (
+        <div 
+          className={`banner ${isVisible ? 'banner-visible' : ''}`} /* Aplica la clase visible */
+          style={{ backgroundImage: `url(${backgroundImageUrl})` }}
+        >
+          <div className="banner-text">
+            <svg width="100" height="100" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="50" cy="50" r="50" fill="white" stroke="black" stroke-width="0"/>
+              <circle cx="40" cy="30" r="10" fill="#ed0000ff" />
+              <circle cx="70" cy="30" r="10" fill="#ffdb22ff" />
+              <circle cx="70" cy="60" r="10" fill="#80d425ff" />
+            </svg>
+            <br/>
+            Sensitivv
+          </div>
+        </div>
+      );
+    }
+
+    // Componente MainContent
+    function MainContent() {
+      return (
+        <div className="mainContentContainer">
+          <main>
+            <h2>Concepto de idea:</h2>
+            <p>
+              Herramienta para acompañar a alergicos, intolerantes o usuario normal a descubrir su sensibilidad por ciertos alimentos. Con una biblioteca de productos alimenticios, la idea es poder identificar los ingredientes y evaluar la sensibilidad del usuario respecto a estos por un seguimiento de los síntomas tras consumir productos y posteriormente se actualizará a una lista que guarde informacion relevante relacionada con los sintomas, como cuales alimentos o productos causaron malestar o no.
+              <br/> <br/>
+              Además, se incluirá una evaluación del riesgo basada en la fiabilidad de la marca del producto, y también se aprovechará grandes cantidades de datos para correlacionar sensibilidades entre usuarios con características similares, sugiriendo posibles riesgos compartidos por ingredientes en común.
+            </p>
+          </main>
+        
+          <main>
+            <h2>Competencia</h2>
+            <p>Descargue 8 apps y visite 3 páginas web que encajaban con la descripción de la propuesta de idea. Como factor en común lograban escanear un producto, o  directamente buscarlo, y uno seleccionaba las alergias de un principio y la plataforma indicaba si uno tenía alergia o no a ciertos alimentos. 
+              <br/> <br/>
+              Para diferir con mi idea, no es necesario poner una “etiqueta” de que te hace mal: se van agregando a medida de la prueba, y no se limita a una lista prehecha de elementos. 
+              <br/> <br/>
+              También ninguno de ellos era asistido (hay distintos tipos de reacción alérgica o intolerancia, dependiendo del tiempo de respuesta es su gravedad), ninguno consideraba la fiabilidad de la empresa y solo uno usaba a los usuarios a beneficio de insights para la misma app, de forma de calificación, y era una app principalmente de cosmética.</p>
+          </main>
+          <div className="differs">
+            Objetivos academicos
+            </div>
+
+          <main>
+            <h2>Temática</h2>
+            <p>
+              ODS: <br/>La idea encaja con 3 de ellas:
+              <ul>
+                <li><b>Salud y bienestar:</b> - 3.4.1, que anhela por la salud y bienestar a través de prevención y tratamiento de enfermedades no transmisibles.</li>
+                <li><b>Hambre cero:</b> - 2.1.2 aunque no de forma directa con el hambre, aborda la seguridad alimentaria, garantizando acceso a alimentos fiables. - 2.2.2 Trata sobre la mejora de malnutrición, siendo esta idea un aporte para la prevención de malnutrición causadas por no saber convivir con alergias o intolerancias alimentarias.</li>
+                <li><b>Producción y consumo responsable:</b> 12.6.1, promueve la responsabilidad social empresarial, lo cual evalúa a las empresas acerca de la fiabilidad de los alimentos por feedback de los usuarios.</li>
+              </ul>
+            </p><hr/>
+            <p>Problema industrial:</p>
+            <p>
+              Relacionado con el inciso 12.6.1 de la ODS, producción y consumo responsable. Si la plataforma alcanza suficiente cantidad de usuarios y datos de calidad, se podría vender los datos hacia las empresas que quieren saber si su producto es apto para el público alérgico y/o intolerante. De la misma forma, los datos se pueden vender a los gobiernos para saber si las empresas cumplen con normativas legales.
+            </p>
+          </main>
+          <main>
+            <h2>Desarrollo</h2>
+            <p>Cómo trabajaremos en react y se pide Responsive design, tendré muy en cuenta al hacer la página web la posibilidad de escalar a una app, principalmente por el reconocimiento de códigos de barra para mejor experiencia (la página web no tendrá reconocimiento de códigos de barra, solo búsqueda). Si bien el código subido para esta página web está solo en un archivo html como se enseñó en clases, lo cambiaré en las próximas entregas a distintos archivos para facilitar el desarrollo y evaluación. 
+            <br/> <br/>
+            Cada usuario va a tener su propio perfil con sus contraseñas e información personal que estará conectada a la respectiva base de datos. Se conectará a una o más de una API para obtener ingredientes de productos alimenticios. Mas adelante se contemplará si implementar API de codigo de barras.
+            </p>
+          </main>
+          <footer>Muchas gracias. Grupo 9 Guillermo guevara</footer>
+        </div>
+      );
+    }
+
+    // Componente App que contiene Header, Banner y MainContent
+    function App() {
+      return (
+        <div>
+          <Header />
+          <Banner />
+          <MainContent />
+        </div>
+      );
+    }
+
+    // Renderizando el componente App en el div con id 'root'
+    ReactDOM.render(<App />, document.getElementById('root'));
+
+  </script>
+</body>
+</html>
