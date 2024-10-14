@@ -1,15 +1,14 @@
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Home from './pages/Home';
+import React from 'react';
+import "./App.css"
 
-function App() {
+import Home from './pages/Home'; // La página que contiene el componente Header
+
+const App = () => {
   return (
-    <Router>
-      <Routes>
-        {/* Define la ruta para el componente Home */}
-        <Route path="/" element={<Home />} />
-      </Routes>
-    </Router>
+    <div className='appContainer'>
+      <Home />
+    </div>
   );
-}
+};
 
 export default App;

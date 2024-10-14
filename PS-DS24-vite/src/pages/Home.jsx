@@ -1,11 +1,17 @@
 import React from 'react';
-import Header from '../components/Header'; // Importamos la barra de navegación
+import Header from '../components/Header'; 
+import Sidebar from '../components/Sidebar';
+import "./Home.css"
+
 
 const Home = () => {
   return (
-    <div>
-      <Header /> {/* Añadimos la barra de navegación */}
-      <h1>Welcome to the Home Page!</h1>
+    <div className='homeContainer'>
+      <Header /> 
+      <div className='pageSplit'>
+        <Sidebar page="Home" />
+        <h1>Welcome to the Home Page!</h1>
+      </div>
     </div>
   );
 };

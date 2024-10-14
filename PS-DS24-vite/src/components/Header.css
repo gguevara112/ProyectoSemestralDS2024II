@@ -1,124 +1,124 @@
 .containerHeader {
-    background-color:#f2f2f7;
-    padding: 10px;
-    width: 100%;
-  }
-  
-  .headerContentSplit {
-    display: flex;
-    justify-content:space-between; /* Un contenido a la izq y otro a la derecha */
-    align-items:center; /* Alineación vertical de los elementos */
-    width: 100%;
-    height: 48px;
-    gap:10px;
-  }
-  
-  /*Icon*/
-  
-  .hamIconAndSearch {
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    height: 100%;
-  }
-  
-  .hamAndIcon{
-    display: flex;
-    flex-direction: row;
-    width: 268px;
-    align-items: center; /*nose*/
-  }
-  
-  .hamburgerIcon {
-    align-items: left;
-    margin: 12px 18px;
-    width: 24px;
-    height: 24px;
-  }
-  
-  .senstivvIcon{
-    width: 40px;
-    height: 40px;
-  }
-  
-  .brand {
-    font-size: 24px;
-    font-weight: 500;
-    color: #5f6368;
-    align-items: left;
-    padding-bottom: 5px;
-  
-  }
-  
-  
-  /*searchbox*/
-  
-  
-  
-  
-  .searchContainer{
-    width: 100%;
-    height: 100%;
-  }
-  
-  .searchShaper{
-    max-width: 720px;
-    height: 100%;
-    margin:0 20px 0 20px;
-    display: flex;
-    align-items: center;
-  }
-  
-  
-  .searchStyle {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    background-color: white;
-    border-radius: 24px;
-    height: 100%;
-  }
-  
-  .searchIcon{
-    width: 24px;
-    height: 24px;
-    margin: 0 20px 0 20px;
-  }
-  
-  .searchBar{
-    border: none;
-    width: 85%;
-    height: 100%;
-    outline: none;
-  }
-  
-  .spaceSearchBox{
-    width: 24px;
-  }
-  
-  
-  
-  /*profile pic*/
-  
-  .profile{
-    width:auto;
-    height: 100%;
-    margin:0 20px 0 20px;
-  
-  }
-  
-  
-  .imageContainer{
-    width: 100%;
-    height: 100%;
-    display:flex;
-    align-items: center;
-  }
-  
-  .imgStyle{
-    width: 38px;
-    height: 38px;
-    border-radius: 50%;
-    object-fit: cover;
-  }
-  
+  background-color:#f2f2f7;
+  padding: 9px;
+  width: 100%;
+}
+
+.headerContentSplit {
+  display: flex;
+  justify-content:space-between; /* Un contenido a la izq y otro a la derecha */
+  align-items:center; /* Alineación vertical de los elementos */
+  width: 100%;
+  height: 48px;
+  gap:10px;
+}
+
+/*Icon*/
+
+.hamIconAndSearch {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 100%;
+}
+
+.hamAndIcon{
+  display: flex;
+  flex-direction: row;
+  width: 268px;
+  align-items: center; /*nose*/
+}
+
+.hamburgerIcon {
+  align-items: left;
+  margin: 12px 18px;
+  width: 24px;
+  height: 24px;
+}
+
+.senstivvIcon{
+  width: 40px;
+  height: 40px;
+}
+
+.brand {
+  font-size: 24px;
+  font-weight: 500;
+  color: #5f6368;
+  align-items: left;
+  padding-bottom: 5px;
+
+}
+
+
+/*searchbox*/
+
+
+
+
+.searchContainer{
+  width: 100%;
+  height: 100%;
+}
+
+.searchShaper{
+  max-width: 720px;
+  height: 100%;
+  margin:0 20px 0 20px;
+  display: flex;
+  align-items: center;
+}
+
+
+.searchStyle {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: white;
+  border-radius: 24px;
+  height: 100%;
+}
+
+.searchIcon{
+  width: 24px;
+  height: 24px;
+  margin: 0 20px 0 20px;
+}
+
+.searchBar{
+  border: none;
+  width: 85%;
+  height: 100%;
+  outline: none;
+}
+
+.spaceSearchBox{
+  width: 24px;
+}
+
+
+
+/*profile pic*/
+
+.profile{
+  width:auto;
+  height: 100%;
+  margin:0 20px 0 20px;
+
+}
+
+
+.imageContainer{
+  width: 100%;
+  height: 100%;
+  display:flex;
+  align-items: center;
+}
+
+.imgStyle{
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+

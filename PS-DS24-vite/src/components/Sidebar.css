@@ -1,0 +1,61 @@
+.containerSidebar{
+    width: 300px;
+    background-color: #FBFBFD;
+}
+
+.containerButtons{
+    display:flex;
+    flex-direction: column;
+    gap:10px;
+    padding: 53px 12px 0 12px ;
+
+}
+
+.buttonShaperM{
+    background-color: #E6E6EB;
+    border-radius: 22px;
+    height: 44px;
+}
+
+.buttonShaper{
+    border-radius: 22px;
+    height: 44px;
+}
+
+.buttonShaper:hover{
+    background-color: #e6e6eb92;
+}
+
+
+
+.buttonsSplit{
+    display: flex;
+    justify-content:space-between; /* Un contenido a la izq y otro a la derecha */
+    align-items:center; /* Alineación vertical de los elementos */
+    height: 100%;
+    gap:20px;
+}
+
+
+
+
+.iconButton{
+    margin-left: 24px;
+    margin-top: 8px;
+    height:28px;
+    width: 28px;
+    align-items: center;
+
+}
+
+
+
+.textButton{
+
+    font-size: 16px;
+    font-weight: bold;
+
+}
+
+
+
