@@ -1,0 +1,69 @@
+.buttonContainer {
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+    height: 190px;
+    padding-left: 80px;
+    padding-right: 80px;
+  }
+  
+  
+  .testTrakerButton {
+    border: 2px solid #f9f9f9;
+    background-color: #f9f9f9;
+    height: 100%;  /* Doble de alto */
+    width: 150%;
+    flex-grow: 1;
+  }
+
+  .testTrakerButton:hover{
+    border:2px solid #f9f9f9;
+
+  }
+  
+  .right-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Espacio entre los botones */
+  }
+
+
+  .resetButton{
+    border: 2px solid #f7b283;
+    background-color: #f7b283;
+    height: 100%;  /* Doble de alto */
+  }
+
+  .resetButton:hover{
+    border: 2px solid #cc936e;
+
+  }
+
+  .wishlistButton{
+    border: 2px solid #c6b2f1;
+    background-color: #c6b2f1;
+    height: 100%;  /* Doble de alto */
+
+  }
+  .wishlistButton:hover{
+    border: 2px solid #8a5cf6;
+  }
+
+
+  .rowWGTwarning{
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+
+  .warningSignWGT{
+    height: 24px;
+    width: 24px;
+  }
+  .WGTwarningsubtitle{
+    color:#0000009a;
+  }
+
+
+  

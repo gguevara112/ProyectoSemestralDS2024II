@@ -1,15 +1,9 @@
-.homeContainer{
+.basicContainer{
     height: 100%;
 }
 
-
- /*pagesplit con problemas de altura*/
-
-
-
 .pageSplit{
     display: flex;
-    justify-content:space-between; 
     height:100%;
     margin-top: -66px;
     padding-top: 66px;

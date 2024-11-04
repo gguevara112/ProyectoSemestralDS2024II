@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import Header from '../components/Header';
 import SidebarTwo from '../components/UIComponents/SidebarTwo';
-import HomeContainer from '../components/HomeComponents/HomeContainer';
-import "./basic.css";
+import TestContainer from '../components/TestComponents/TestContainer';
+import './basic.css';
 
-const Home = () => {
+const Test = () => {
   const [isSidebarVisible, setIsSidebarVisible] = useState(true); // Estado para la visibilidad del Sidebar
 
   const toggleSidebar = (isVisible) => {
@@ -16,10 +16,10 @@ const Home = () => {
       <Header toggleSidebar={toggleSidebar} /> 
       <div className='pageSplit'>
         {isSidebarVisible && <SidebarTwo />} {/* Muestra u oculta SidebarTwo */}
-        <HomeContainer />
+        <TestContainer />
       </div>
     </div>
   );
 };
 
-export default Home;
+export default Test;
