@@ -65,7 +65,7 @@ const SignUp = () => {
         }),
       });
 
-      if (response.status === 409) {
+      if (response.status === 409) { // aqui usamos el toast para mostrar el mensaje de error
         setShowToast(true); 
         return;
       }
@@ -111,7 +111,7 @@ const SignUp = () => {
               value={formData.email}
               onChange={handleInputChange}
               required
-            />
+            />  {/* valida el campo si es mail  */}
           </div>
           <div className="form-group">
             <label>{t('LfNrTjPwXzQk')}</label> {/* Contraseña */}
@@ -126,7 +126,7 @@ const SignUp = () => {
             </div>
             {!passwordValid && formData.password.length > 0 && (
               <p className="error-text2">{t('HsJkTrLvBnLk')}</p>
-            )}
+            )}  {/* valida el campo si es de mas de 8 caracteres la contraseña  */} 
           </div>
           <div className="form-group">
             <label>{t('XnLqTvFrRmNs')}</label> {/* Confirmar Contraseña */}
@@ -147,8 +147,8 @@ const SignUp = () => {
               </button>
             </div>
             {!passwordsMatch && formData.confirmPassword.length > 0 && (
-              <p className="error-text2">{t('FkLnRtQwXzTv')}</p>
-            )}
+              <p className="error-text2">{t('FkLnRtQwXzTv')}</p> 
+            )}{/* Requisito de campo: que las contraseñas coincidan */}
           </div>
           <button
             type="submit"
@@ -164,7 +164,8 @@ const SignUp = () => {
           </button>
         </div>
       </div>
-
+      
+      {/* Toast para mostrar mensaje de error */}
       {showToast && ( 
         <div
           id="toast-warning"
