@@ -66,7 +66,7 @@ const SignUp = () => {
       });
 
       if (response.status === 409) {
-        setShowToast(true); // Mostrar el toast cuando el correo ya esté registrado
+        setShowToast(true); 
         return;
       }
 
@@ -164,7 +164,8 @@ const SignUp = () => {
           </button>
         </div>
       </div>
-      {showToast && ( // Mostrar el toast si `showToast` es verdadero
+
+      {showToast && ( 
         <div
           id="toast-warning"
           className="flex items-right w-full max-w-xs p-4 text-gray-500 bg-white rounded-lg shadow dark:text-gray-400 dark:bg-gray-800"
