@@ -32,6 +32,7 @@
 | `userID`              | string    | User's identifier                               |
 | `itemID`              | string    | Identifier of the item related to the test      |
 | `dateCreated`         | date      | Date the test was created                       |
+| `DaysTestSelected`  | integer  | Trial period in days (value between 2 and 5) |
 
 ## Table: `listsensitivity`
 | Field        | Type      | Description                                           |

@@ -1,19 +1,17 @@
 // Wishlist.jsx
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useProductContext } from '@/ProductContext';
 import axios from 'axios';
-import { useTranslation } from 'react-i18next'; // Importar el hook de traducción
+import { useTranslation } from 'react-i18next';
 import './WishlistList.css';
 
 const Wishlist = () => {
   const [items, setItems] = useState([]);
   const [draggedItem, setDraggedItem] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
-  const { setSelectedProductId } = useProductContext();
   const navigate = useNavigate();
   const userId = localStorage.getItem('userId');
-  const { t } = useTranslation(); // Hook de traducción
+  const { t } = useTranslation();
 
   useEffect(() => {
     const fetchWishlist = async () => {
@@ -49,7 +47,9 @@ const Wishlist = () => {
   }, [userId]);
 
   const handleItemClick = (itemID) => {
-    setSelectedProductId(itemID);
+    // Guardar el id del producto en localStorage antes de redirigir
+    localStorage.setItem('selectedProductId', itemID);
+
     navigate('/product');
   };
 
@@ -101,7 +101,7 @@ const Wishlist = () => {
               onClick={() => handleItemClick(item.code)} // Al hacer clic, se establece el ID del producto y se navega a ProductDetail
             >
               <img src={item.imgSrc} alt={item.name} />
-              <div className="item-name">{item.name}</div>
+              <div className="item-name5">{item.name}</div>
 
               <button className="testButton">{t('HiJkLmNoPqRs')}</button> {/* Test */}
               <button className="deleteButton" onClick={() => handleDelete(item.itemID)}>{t('TuVwXyZaBcDe')}</button> {/* Delete */}

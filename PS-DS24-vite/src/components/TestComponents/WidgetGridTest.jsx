@@ -1,34 +1,105 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import './WidgetGridTest.css';
 
 const WidgetGridTest = () => {
+  const [product, setProduct] = useState({
+    name: 'Producto Estático',
+    imgSrc: 'https://via.placeholder.com/100',
+    lastTested: null,
+    DaysTestSelected: 0,
+  });
+
+  const userId = localStorage.getItem('userId');
+
+  useEffect(() => {
+    const fetchProductDetails = async () => {
+      try {
+        const response = await axios.get(`http://localhost:5001/api/testmade/${userId}`);
+        const tests = response.data;
+
+        if (tests.length > 0) {
+          const lastTest = tests[0]; // Suponiendo que el primer elemento es el último test realizado
+          const productResponse = await axios.get(`https://world.openfoodfacts.org/api/v0/product/${lastTest.itemID}.json`);
+          const productData = productResponse.data.product;
+
+          setProduct({
+            name: productData ? productData.product_name : "Nombre no disponible",
+            imgSrc: productData ? productData.image_url : "https://via.placeholder.com/100",
+            lastTested: lastTest.dateCreated,
+            DaysTestSelected: lastTest.DaysTestSelected,
+          });
+        }
+      } catch (error) {
+        console.error("Error al obtener los detalles del producto:", error);
+      }
+    };
+
+    fetchProductDetails();
+  }, [userId]);
+
+  const calculateRemainingTime = () => {
+    if (!product.lastTested || !product.DaysTestSelected) return 'Tiempo no disponible';
+
+    const lastTestDate = new Date(product.lastTested);
+    const endTime = new Date(lastTestDate.getTime() + product.DaysTestSelected * 24 * 60 * 60 * 1000);
+    const now = new Date();
+    const remainingTime = endTime - now;
+
+    if (remainingTime <= 0) return 'Tiempo expirado';
+
+    const days = Math.floor(remainingTime / (24 * 60 * 60 * 1000));
+    const hours = Math.floor((remainingTime % (24 * 60 * 60 * 1000)) / (60 * 60 * 1000));
+    const minutes = Math.floor((remainingTime % (60 * 60 * 1000)) / (60 * 1000));
+
+    return `${days > 0 ? `${days} día${days > 1 ? 's' : ''} ` : ''}${hours} hr${hours !== 1 ? 's' : ''} ${minutes} min`;
+  };
+
+  const buttonLabels = [
+    { text: 'Critic', color: '#ed0000ff' },
+    { text: 'Sensitive', color: '#ffdb22ff' },
+    { text: 'Safe', color: '#80d425ff' },
+  ];
+
   return (
-    <div className="buttonContainer">
-      <button className="testTrakerButton">
-        <span>Test</span>
-      </button>
+    <div className="buttonContainer2">
+      <div className="testTrakerButton2">
+        <div className="containerProduct2">
+          <div className="imgProduct2">
+            <img src={product.imgSrc} alt={product.name} />
+          </div>
+          <div className="nameProduct2">
+            {product.name}
+          </div>
+        </div>
+        <div className="timeleftfortest">
+          <div className="timeleftfortestNumber">
+            {calculateRemainingTime()}
+          </div>
+          <div className="timeleftfortestText">
+            Tiempo restante de la prueba
+          </div>
+        </div>
+      </div>
 
       <div className="right-buttons">
-        <button className="resetButton">
-          <div className='rowWGTwarning'>
-            <div className='warningSignWGT'>
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126ZM12 15.75h.007v.008H12v-.008Z" />
-              </svg>
-            </div>
-            <div className='WGTGridcol'>
-              <div className='WGTwarningText'>Critic event</div>    
-              <div className='WGTwarningsubtitle'>Reset your whole lists</div>               
-            </div>
-
-
-
-
-          </div>
-        </button>
-        <button className="wishlistButton">
-          <span>Wishlist</span>
-        </button>
+        <div className="selection-buttons-rect">
+          {buttonLabels.map((button, index) => (
+            <button
+              key={index}
+              style={{
+                backgroundColor: button.color,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                padding: '10px 20px',
+              }}
+              className="color-button"
+            >
+              {button.text}
+            </button>
+          ))}
+        </div>
       </div>
     </div>
   );

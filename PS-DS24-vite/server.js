@@ -383,56 +383,41 @@ app.get('/api/history/:userID', async (req, res) => {
   }
 });
 
-// Endpoint para registrar un nuevo test
-app.post('/api/tests', async (req, res) => {
+
+
+// Endpoint para guardar el test realizado en la tabla "testmade"
+app.post('/api/testmade', async (req, res) => {
   try {
-    const { userID, itemID, trialPeriodDays } = req.body;
-
-    // Validación de campos requeridos
-    if (!userID || !itemID) {
-      return res.status(400).json({ error: "User ID and Item ID are required" });
-    }
-
+    const { userID, itemID, dateCreated, DaysTestSelected } = req.body;
     const database = client.db('sensitivv');
     const collection = database.collection('testmade');
 
-    // Creación del objeto del test con los datos recibidos
-    const newTest = {
-      userID,
-      itemID,
-      trialPeriodDays: trialPeriodDays || 3, // Asignar valor predeterminado de 3 si no se proporciona
-      dateCreated: new Date(),
-    };
+    // Inserta el registro en la base de datos
+    await collection.insertOne({ userID, itemID, dateCreated, DaysTestSelected });
 
-    // Inserción en la base de datos
-    const result = await collection.insertOne(newTest);
-
-    // Devolver el ID del test insertado en la respuesta
-    res.status(201).json({ message: "Test registrado exitosamente", testId: result.insertedId });
+    res.status(201).json({ message: "Test guardado exitosamente" });
   } catch (error) {
-    console.error("Error registrando el test:", error);
-    res.status(500).json({ error: "Error registrando el test" });
+    console.error("Error al guardar el test:", error);
+    res.status(500).json({ error: "Error al guardar el test" });
   }
 });
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+// Endpoint para obtener los tests realizados por un usuario
+app.get('/api/testmade/:userID', async (req, res) => {
+  try {
+    const { userID } = req.params;
+    const database = client.db('sensitivv');
+    const collection = database.collection('testmade');
+    
+    const tests = await collection.find({ userID }).sort({ dateCreated: -1 }).toArray();
+    res.status(200).json(tests);
+  } catch (error) {
+    console.error("Error al obtener los tests:", error);
+    res.status(500).json({ error: "Error al obtener los tests" });
+  }
+});
 
 
 

@@ -17,11 +17,15 @@ const ProductSearchBox = () => {
     if (event.key === 'Enter') {
       setLoading(true);
       try {
-        const response = await axios.get(
-          `https://world.openfoodfacts.org/cgi/search.pl?search_terms=${searchTerm}&search_simple=1&action=process&json=1`
-        );
+        const [chileResponse, usaResponse] = await Promise.all([
+          axios.get(`https://world.openfoodfacts.org/cgi/search.pl?search_terms=${searchTerm}&search_simple=1&action=process&json=1&tagtype_0=countries&tag_contains_0=contains&tag_0=Chile`),
+          axios.get(`https://world.openfoodfacts.org/cgi/search.pl?search_terms=${searchTerm}&search_simple=1&action=process&json=1&tagtype_0=countries&tag_contains_0=contains&tag_0=United States`),
+        ]);
+        
+        // Combina los resultados y limita el número total de productos
+        const combinedResults = [...chileResponse.data.products, ...usaResponse.data.products].slice(0, 20);
         setContextSearchTerm(searchTerm);
-        setSearchResults(response.data.products.slice(0, 20));
+        setSearchResults(combinedResults);
         navigate('/productsearch');
       } catch (error) {
         console.error('Error al buscar productos:', error);

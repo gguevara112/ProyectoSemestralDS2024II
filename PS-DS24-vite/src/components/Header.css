@@ -60,6 +60,8 @@
 
 
 }
+
+
 .iiioookkk{
   display: flex;
   align-items: left; 
@@ -210,6 +212,9 @@
 @media (max-width: 480px) {
   .hamAndIcon {
     width: 150px; /* Más reducción para pantallas muy pequeñas */
+  }
+  .hamburgerIconB{
+    padding-top:10px;
   }
 
   .brand {

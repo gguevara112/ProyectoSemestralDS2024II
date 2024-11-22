@@ -2,16 +2,15 @@
 import React from 'react';
 import './ItemsG.css';
 import { useNavigate } from 'react-router-dom';
-import { useTranslation } from 'react-i18next'; // Importar el hook de traducción
-import { useProductContext } from '@/ProductContext';
+import { useTranslation } from 'react-i18next';
 
-const ItemsG = ({ items, categories }) => {
-  const { setSelectedProductId } = useProductContext();
+const ItemsG = ({ items, categories, onItemClick }) => {
   const navigate = useNavigate();
-  const { t } = useTranslation(); // Hook de traducción
+  const { t } = useTranslation();
 
   const handleItemClick = (itemID) => {
-    setSelectedProductId(itemID);
+    // Guardar el itemID en localStorage antes de navegar
+    localStorage.setItem('selectedProductId', itemID);
     navigate('/product');
   };
 

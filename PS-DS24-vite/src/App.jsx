@@ -2,6 +2,8 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './index.css';
+import 'flowbite';
 
 
 
@@ -17,6 +19,8 @@ import ShowResults from "./pages/ShowResults"
 import ProductSearchBox from './componentsDBOFF/ProductSearchBox';
 import ProductSearch from './componentsDBOFF/ProductSearch';
 import ProductDetail from './componentsDBOFF/ProductDetail';
+import ProductDetailForUser from './componentsDBOFF/ProductDetailForUser';
+import ProductDetailsOPF from './componentsDBOFF/ProductDetailsOPF';
 import { ProductProvider } from './ProductContext';
 
 
@@ -37,6 +41,9 @@ const App = () => {
             <Route path="/productsearch" element={<ProductSearch />} />
             <Route path="/product" element={<ProductDetail />} />
             <Route path="/showresults" element={<ShowResults />} />
+            <Route path="/ProductDetailForUser" element={<ProductDetailForUser />} />
+            <Route path="/ProductDetailsOPF" element={<ProductDetailsOPF />} />
+
 
             
           </Routes>

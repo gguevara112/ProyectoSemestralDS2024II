@@ -8,6 +8,7 @@ const HomeProducts = () => {
     return (
         <div className='testContainer'>
             <WeekCalendar />
+            <WidgetGridTest />
             <HistoryList /> 
         
             
@@ -16,3 +17,4 @@ const HomeProducts = () => {
 };
 
 export default HomeProducts;
+

@@ -3,6 +3,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
     height: 100vh;
     background-color: #f5f5f5;
     font-family: Arial, sans-serif;
@@ -101,4 +102,10 @@
     text-align:right;
     background-color: #ffffff;
     border:none;
+}
+
+.toast-container4{
+    display: flex   ;
+    justify-content: right;
+    padding:0 20px
 }
